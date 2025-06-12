@@ -1,9 +1,11 @@
 package main
 
 import (
+	flag2 "flag"
+	"os"
+
 	//"errors"
 	"fmt"
-	"os"
 	//"slices"
 	"strconv"
 )
@@ -23,6 +25,8 @@ var conversions = map[string]float64{
 	"INRJPY": 1.69,
 }
 
+var currencies = []string{"USD", "INR", "EUR", "JPY"}
+
 func convert(val float64, source string, target string) float64 {
 	//fmt.Println(source + target)
 	return val * conversions[source+target]
@@ -35,8 +39,6 @@ func validate(args []string) (float64, string, string, error) {
 	if e != nil {
 		fmt.Println(e)
 	}
-
-	var currencies = []string{"USD", "INR", "EUR", "JPY"}
 
 	var f1, f2 bool
 	for i := 0; i < len(currencies); i++ {
@@ -64,13 +66,24 @@ func validate(args []string) (float64, string, string, error) {
 }
 func main() {
 
-	val, source, target, err := validate(os.Args)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		converted := convert(val, source, target)
-		fmt.Printf("%f %s is equivalent to %f %s\n", val, source, converted, target)
+	// -list
+	var flag = flag2.String("list", "", "Get a list of supported currencies")
+	flag2.Parse()
 
+	if *flag == "all" {
+		fmt.Println("Supported currencies: ")
+		for i := 0; i < len(currencies); i++ {
+			fmt.Println(currencies[i])
+		}
+	} else {
+		val, source, target, err := validate(os.Args)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			converted := convert(val, source, target)
+			fmt.Printf("%f %s is equivalent to %f %s\n", val, source, converted, target)
+
+		}
 	}
 
 	//fmt.Println(converted)
