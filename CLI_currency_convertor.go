@@ -1,10 +1,10 @@
 package main
 
 import (
-	"errors"
+	//"errors"
 	"fmt"
 	"os"
-	"slices"
+	//"slices"
 	"strconv"
 )
 
@@ -38,27 +38,27 @@ func validate(args []string) (float64, string, string, error) {
 
 	var currencies = []string{"USD", "INR", "EUR", "JPY"}
 
-	//var f1, f2 bool
-	//for i:=0; i<len(currencies); i++ {
-	//	if currencies[i] == args[2] {
-	//		f1 = true
-	//	}
-	//	if currencies[i] == args[3] {
-	//		f2 = true
-	//	}
-	//}
-	//if !f1 || !f2 {
-	//	fmt.Println("not a valid currency argument")
-	//}
+	var f1, f2 bool
+	for i := 0; i < len(currencies); i++ {
+		if currencies[i] == args[2] {
+			f1 = true
+		}
+		if currencies[i] == args[3] {
+			f2 = true
+		}
+	}
+	if !f1 || !f2 {
+		fmt.Println("not a valid currency argument")
+	}
 
-	if !slices.Contains(currencies, args[2]) {
-		fmt.Println(args[2], " is not valid currency")
-		err = errors.New("invalid currency")
-	}
-	if !slices.Contains(currencies, args[3]) {
-		fmt.Println(args[3], " is not valid currency")
-		err = errors.New("invalid currency")
-	}
+	//if !slices.Contains(currencies, args[2]) {
+	//	fmt.Println(args[2], " is not valid currency")
+	//	err = errors.New("invalid currency")
+	//}
+	//if !slices.Contains(currencies, args[3]) {
+	//	fmt.Println(args[3], " is not valid currency")
+	//	err = errors.New("invalid currency")
+	//}
 
 	return val, args[2], args[3], err
 }
