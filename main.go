@@ -78,7 +78,7 @@ func main() {
 			break
 		}
 
-		// switch case to handle
+		// switch case to call functions
 		switch n {
 
 		// enter new Task
@@ -86,8 +86,8 @@ func main() {
 			fmt.Println("Enter Task: ")
 			var t1 string
 			bufReader := bufio.NewReader(os.Stdin)
-			t1, err := bufReader.ReadString('\n')
-			Check(err)
+			t1, err2 := bufReader.ReadString('\n')
+			Check(err2)
 			AddTask(t1, nextId, mp)
 
 		// list pending tasks
@@ -99,8 +99,8 @@ func main() {
 		case 3:
 			fmt.Println("Enter Task id: ")
 			var id int
-			_, err := fmt.Scan(&id)
-			Check(err)
+			_, err3 := fmt.Scan(&id)
+			Check(err3)
 			_, ok := mp[id]
 			if ok {
 				fmt.Println("Marking task", id, "as completed...")
