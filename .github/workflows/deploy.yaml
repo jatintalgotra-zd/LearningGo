@@ -7,29 +7,30 @@ on:
 jobs:
   build_and_dock:
     name : build and dockerize
-    runs-on: unbuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Go
+      - name: setup go
         uses: actions/setup-go@v4
         with:
           go-version: '1.21'
 
-      - name: Build Go
+      - name: build go
         run: go build -o main
 
       - name: login to docker hub
         uses: docker/login-action@v3.4.0
         with:
-          Username: demouser
-          Password: nopassword
+          Username: ${{secrets.DOCKER_USERNAME}}
+          Password: ${{secrets.DOCKER_PASSWORD}}
+          
       - name: docker build
-        run: docker build command--
+        run: docker build -t ${{secrets.DOCKER_USERNAME}}/sample:latest .
 
       - name: docker push
-        run: docker push
+        run: docker push 
           
       
         
