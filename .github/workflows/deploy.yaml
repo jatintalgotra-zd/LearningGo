@@ -5,8 +5,8 @@ on:
 
 
 jobs:
-  build_and_dock:
-    name : build and dockerize
+  build:
+    name : build
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
@@ -18,19 +18,5 @@ jobs:
           go-version: '1.21'
 
       - name: build go
-        run: go build -o main
-
-      - name: login to docker hub
-        uses: docker/login-action@v3.4.0
-        with:
-          Username: ${{secrets.DOCKER_USERNAME}}
-          Password: ${{secrets.DOCKER_PASSWORD}}
-          
-      - name: docker build
-        run: docker build -t ${{secrets.DOCKER_USERNAME}}/sample:latest .
-
-      - name: docker push
-        run: docker push 
-          
-      
-        
+        run: |
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -buildvcs=false -o main
