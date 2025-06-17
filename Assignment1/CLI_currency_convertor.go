@@ -1,4 +1,4 @@
-package main
+package Assignment1
 
 import (
 	//"errors"

@@ -1,4 +1,4 @@
-package main
+package Assignment2
 
 import (
 	"fmt"
