@@ -48,7 +48,7 @@ func main() {
 
 	acc.ShowBalance()
 
-	// Deposit
+	// Depoasit
 	acc.AddFunds(200.0)
 	acc.ShowBalance()
 
