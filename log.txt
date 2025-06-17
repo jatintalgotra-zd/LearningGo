@@ -1,0 +1,10 @@
+[INFO] User 'admin' logged in from 192.168.1.10
+[WARNING] Disk space critically low on /dev/sda1
+[ERROR] Database connection refused for user 'app_user'
+[INFO] Scheduled backup completed successfully
+[WARNING] Unusual number of login attempts detected
+[ERROR] File '/var/log/app.log' not found
+[INFO] Application module 'payment_gateway' initialized
+[ERROR] Network unreachable: Check DNS settings
+[WARNING] CPU utilization consistently above 90%
+[INFO] Configuration updated from 'config.json'
