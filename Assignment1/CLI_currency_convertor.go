@@ -1,10 +1,6 @@
 package main
 
 import (
-	flag2 "flag"
-	"os"
-	"time"
-
 	//"errors"
 	"fmt"
 	//"slices"
@@ -65,46 +61,47 @@ func validate(args []string) (float64, string, string, error) {
 
 	return val, args[2], args[3], err
 }
-func main() {
 
-	//if time.Now(
-	//fmt.Println(time.Now().Hour())
-
-	if time.Now().Hour() < 12 {
-		fmt.Println("Good Morning!")
-	} else if time.Now().Hour() < 15 {
-		fmt.Println("Good Afternoon!")
-	} else {
-		fmt.Println("Good Evening!")
-	}
-
-	// -list all
-	var flag = flag2.String("list", "", "Get a list of supported currencies")
-	flag2.Parse()
-
-	if *flag == "all" {
-		fmt.Println("Supported currencies: ")
-		for i := 0; i < len(currencies); i++ {
-			fmt.Println(currencies[i])
-		}
-	} else {
-
-		// when not enough arguments in CLI input
-		if len(os.Args) < 4 {
-			fmt.Println("Not enough arguments")
-			return
-		}
-
-		val, source, target, err := validate(os.Args)
-		if err != nil {
-			fmt.Println(err)
-		} else {
-			converted := convert(val, source, target)
-			fmt.Printf("%f %s is equivalent to %f %s\n", val, source, converted, target)
-
-		}
-	}
-
-	//fmt.Println(converted)
-
-}
+//func main() {
+//
+//	//if time.Now(
+//	//fmt.Println(time.Now().Hour())
+//
+//	if time.Now().Hour() < 12 {
+//		fmt.Println("Good Morning!")
+//	} else if time.Now().Hour() < 15 {
+//		fmt.Println("Good Afternoon!")
+//	} else {
+//		fmt.Println("Good Evening!")
+//	}
+//
+//	// -list all
+//	var flag = flag2.String("list", "", "Get a list of supported currencies")
+//	flag2.Parse()
+//
+//	if *flag == "all" {
+//		fmt.Println("Supported currencies: ")
+//		for i := 0; i < len(currencies); i++ {
+//			fmt.Println(currencies[i])
+//		}
+//	} else {
+//
+//		// when not enough arguments in CLI input
+//		if len(os.Args) < 4 {
+//			fmt.Println("Not enough arguments")
+//			return
+//		}
+//
+//		val, source, target, err := validate(os.Args)
+//		if err != nil {
+//			fmt.Println(err)
+//		} else {
+//			converted := convert(val, source, target)
+//			fmt.Printf("%f %s is equivalent to %f %s\n", val, source, converted, target)
+//
+//		}
+//	}
+//
+//	//fmt.Println(converted)
+//
+//}
