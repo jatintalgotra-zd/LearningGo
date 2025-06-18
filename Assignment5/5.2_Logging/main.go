@@ -11,37 +11,36 @@ type Logger interface {
 // ConsoleLogger
 // struct defining message string for console
 type ConsoleLogger struct {
-	message string
 }
 
 // Log
 // method to simulate logging to console
 func (c *ConsoleLogger) Log(message string) {
-	c.message = message
+	fmt.Println("Console:", message)
 }
 
 // FileLogger
 // struct defining message string for file
 type FileLogger struct {
-	message string
+	logs []string
 }
 
 // Log
 // method to simulate logging to file
 func (f *FileLogger) Log(message string) {
-	f.message = message
+	f.logs = append(f.logs, message)
+	fmt.Println("File:", message)
 }
 
 // RemoteLogger
 // struct defining message string for remote server
 type RemoteLogger struct {
-	message string
 }
 
 // Log
 // method to simulate logging to remote server
 func (r *RemoteLogger) Log(message string) {
-	r.message = message
+	fmt.Println("Remote:", message)
 }
 
 func main() {
@@ -59,11 +58,6 @@ func main() {
 
 	// calling LogAll function
 	LogAll(all, "Hello!")
-
-	// result
-	fmt.Println("Console:", console.message)
-	fmt.Println("File:", file.message)
-	fmt.Println("Remote:", remote.message)
 
 }
 
