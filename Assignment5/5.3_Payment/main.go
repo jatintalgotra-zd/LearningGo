@@ -92,21 +92,9 @@ func main() {
 
 	// Looping over different Methods of Payment
 	for _, method := range slice {
-		// Type Switching
-		switch p := method.(type) {
-		// Type - CreditCard
-		case *CreditCard:
-			p.GenerateOTP()
-			fmt.Println(p.Pay(500))
-
-		// Type - PayPal
-		case *PayPal:
-			fmt.Println(p.Pay(500))
-
-		// Type - UPI
-		case *UPI:
-			p.GenerateOTP()
-			fmt.Println(p.Pay(500))
+		if otpSupported, ok := method.(SupportsOTP); ok {
+			otpSupported.GenerateOTP()
 		}
+		method.Pay(500)
 	}
 }
