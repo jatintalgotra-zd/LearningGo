@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+// TestAddTask
+// test function for AddTask - checks for length, Task description and Task status
 func TestAddTask(t *testing.T) {
 	tasks := make([]Task, 0)
 	nextId := GenId()
@@ -23,6 +25,8 @@ func TestAddTask(t *testing.T) {
 	}
 }
 
+// TestCompleteTask
+// test function for CompleteTask - checks for Task status
 func TestCompleteTask(t *testing.T) {
 	tasks := []Task{
 		{Desc: "test task"},
@@ -35,6 +39,8 @@ func TestCompleteTask(t *testing.T) {
 	}
 }
 
+// TestListTasks
+// test function for ListTasks - checks using slice of strings, if the task list matches test case
 func TestListTasks(t *testing.T) {
 	tasks := []Task{
 		{Desc: "test task 1"},
